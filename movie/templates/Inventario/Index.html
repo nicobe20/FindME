@@ -1,0 +1,49 @@
+{% extends "TB.html" %}
+
+{% block titulo %} Indice de inventario {% endblock %}
+
+{% block contenido %}  
+
+
+<nav class="breadcrumb">
+    <a class="breadcrumb-item" href="{% url 'editar' %}">Editar Datos</a>
+    <a class="breadcrumb-item" href="#">Eliminar Datos</a>
+    <a class="breadcrumb-item" href="{% url 'ingresarInventario' %}">Añadir Inventario</a>
+   
+</nav>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Columna</th>
+                    <th>Fila</th>
+                    <th>Bloque</th>
+        
+                </tr>
+            </thead>
+            <tbody>
+    
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>A</td>
+                   
+
+                </tr>
+            </tbody>
+        </table>
+        
+
+    </div>
+    <div class="card-footer text-muted">
+        Lista de inventario en el almacen
+    </div>
+</div>
+
+
+
+
+{% endblock %}
+
+    

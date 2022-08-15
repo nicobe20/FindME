@@ -15,11 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from movie import views as movieViews
+from movie import views as views
 urlpatterns = [
 
-    path('admin/', admin.site.urls),
-    path('',movieViews.home),
-    path('about/',movieViews.about),
-  
+    path('admin/', admin.site.urls,name='Admin'),
+    path('',views.home, name='inicio'),
+   # path('about/',views.about, name='about'),
+    path('Findme/', views.Findme, name ='Findme' ),
+    path('Inventario/', views.Inventario, name='Inventario' ),
+    path('Inventario/añadirInventario', views.ingresarInventario, name='ingresarInventario' ),
+     path('Inventario/EditarInventario', views.EditarInventario, name='editar' ),
+    
+    
 ]

@@ -22,18 +22,21 @@
                 </tr>
             </thead>
             <tbody>
-    
+
+                {% for inventario in inventario %}
                 <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>A</td>
+                    <td>{{inventario.id}}</td>
+                    <td>{{inventario.filas}}</td>
+                    <td>{{inventario.columnas}}</td>
+                    <td>{{inventario.bloque}}</td>
                    
 
                 </tr>
+                {% endfor %}
             </tbody>
         </table>
-        
+       
+
 
     </div>
     <div class="card-footer text-muted">

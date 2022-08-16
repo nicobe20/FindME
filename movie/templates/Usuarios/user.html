@@ -1,0 +1,44 @@
+{% extends "TB.html" %}
+
+{% block titulo %} Indice de inventario {% endblock %}
+
+{% block contenido %}  
+
+<a class="breadcrumb-item" href="{% url 'Buscar' %}">Guiame a mi paquete</a>
+
+</nav>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Columna</th>
+                    <th>Fila</th>
+                    <th>Bloque</th>
+        
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for inventario in inventario %}
+                <tr>
+                    <td>{{inventario.id}}</td>
+                    <td>{{inventario.filas}}</td>
+                    <td>{{inventario.columnas}}</td>
+                    <td>{{inventario.bloque}}</td>
+                   
+
+                </tr>
+                {% endfor %}
+            </tbody>
+           
+        </table>
+       
+
+
+    </div>
+    <div class="card-footer text-muted">
+        Lista de inventario en el almacen
+    </div>
+</div>
+
+{% endblock %}  

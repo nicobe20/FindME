@@ -24,7 +24,9 @@ urlpatterns = [
     path('Findme/', views.Findme, name ='Findme' ),
     path('Inventario/', views.Inventario, name='Inventario' ),
     path('Inventario/añadirInventario', views.ingresarInventario, name='ingresarInventario' ),
-     path('Inventario/EditarInventario', views.EditarInventario, name='editar' ),
+    path('Inventario/EditarInventario', views.EditarInventario, name='editar' ),
+    path('Inventario/BuscarPaquete', views.BuscarPaquete, name='Buscar' ),
+    path('Usuarios/', views.Inventario, name = 'usuario'),
     
     
 ]

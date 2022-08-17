@@ -8,6 +8,7 @@ class InventarioDeBodega(models.Model):
     bloque = models.CharField(max_length=200,verbose_name='Bloque')
 
 
+
     
 
 

@@ -5,16 +5,19 @@
 {% block contenido %}
 
 
-<div class="p-5 bg-grey">
-    <div class="container">
+
+
+
+
+<div class="p-5 bg-light">
         <h1 class="display-3">Welcome to FindME</h1>
-     
+        <p class="lead">Seleccione si usted es administardor o usuario</p>
         <hr class="my-2">
+        <p><a class="btn btn btn" href="/admin/" role="button">Help</a></p>
         <p class="lead">
-            <a class="btn btn-success btn" href="/admin/" role="button">Administrador</a>
-            <a class="btn btn-success btn" href="{% url  'usuario'  %}" role="button">usuario</a>
+            <a class="btn btn btn" href="/admin/" role="button">Administrador</a>
+            <a class="btn btn btn" href="{% url  'usuario'  %}" role="button">usuario</a>
         </p>
-    </div>
 </div>
 
 {% endblock  %}

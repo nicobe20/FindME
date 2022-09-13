@@ -4,20 +4,61 @@
 
 {% block contenido %}
 
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Inria Sans' rel='stylesheet'>
+    <style>
+
+
+    h1{
+      
+      size: 36px;
+      position: relative ;
+      top: 60px;
+      left: 45px;
+
+    }
+    p1{
+        
+      size: 36px;
+      position: relative ;
+      top: 110px;
+      left: 30px;
+
+    }
+
+    p2{
+          
+      size: 36px;
+      position: relative ;
+      top: 5px;
+      left: 20px;
+
+
+    }
+
+    p3{
+          
+          size: 36px;
+          position: relative ;
+          top: 5px;
+          left: 20px;
+    
+    
+        }
+    body {
+        font-family: 'Inria Sans';font-size: 22px;
+    }
+    </style>
+    </head>
 
 
 
-
-
-<div class="p-5 bg-light">
-        <h1 class="display-3">Welcome to FindME</h1>
-        <p class="lead">Seleccione si usted es administardor o usuario</p>
-        <hr class="my-2">
-        <p><a class="btn btn btn" href="/admin/" role="button">Help</a></p>
-        <p class="lead">
-            <a class="btn btn btn" href="/admin/" role="button">Administrador</a>
-            <a class="btn btn btn" href="{% url  'usuario'  %}" role="button">usuario</a>
-        </p>
+    <h1>Welcome to FindMe</h1>
+    <p1>The app design especially for all you're logistic needs.</p>
+    <p2>We are here to help you sort you're inventory</p2><br>
+    <p3>And to help you find anything in it!</p3> 
+</br>
+        
 </div>
 
 {% endblock  %}

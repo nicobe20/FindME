@@ -23,10 +23,20 @@ urlpatterns = [
    # path('about/',views.about, name='about'),
     path('Findme/', views.Findme, name ='Findme' ),
     path('Inventario/', views.Inventario, name='Inventario' ),
-    path('Inventario/añadirInventario', views.ingresarInventario, name='ingresarInventario' ),
-    path('Inventario/EditarInventario', views.EditarInventario, name='editar' ),
+    path('Inventario/añadirInventario', views.AñadirInventario, name='ingresarInventario' ),
     path('Inventario/BuscarPaquete', views.BuscarPaquete, name='Buscar' ),
-    path('Usuarios/', views.Inventario, name = 'usuario'),
+    path('Tasks/TareasInv', views.TareasInv, name='Tareas' ),
+    path('Tasks/CrearTareas', views.Añadirtareas, name='Crear'),
+   
+ 
+    path('eliminar/<int:id>', views.eliminarInventario, name='eliminar' ),
+    path('Delete/<int:id>', views.eliminarTareas, name='Delete' ),
+ 
+
+    path('Inventario/EditarInventario/<int:id>', views.editar, name='editar'),
+    path('Tasks/EditarTarea/<int:id>', views.editartareas, name='edit'),
+ 
+  
     
     
 ]

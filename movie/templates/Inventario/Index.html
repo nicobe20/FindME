@@ -6,9 +6,7 @@
 
 
 <nav class="breadcrumb">
-    <a class="breadcrumb-item" href="{% url 'editar' %}">Editar Datos</a>
-    <a class="breadcrumb-item" href="#">Eliminar Datos</a>
-    <a class="breadcrumb-item" href="{% url 'ingresarInventario' %}">Añadir Inventario</a>
+    <a name="" id="" class="btn btn-light" href="{% url 'ingresarInventario' %}" role="button">Add ></a>
    
 </nav>
         <table class="table">
@@ -18,6 +16,7 @@
                     <th>Columna</th>
                     <th>Fila</th>
                     <th>Bloque</th>
+                    <th>Contenidos</th>
         
                 </tr>
             </thead>
@@ -29,6 +28,9 @@
                     <td>{{inventario.filas}}</td>
                     <td>{{inventario.columnas}}</td>
                     <td>{{inventario.bloque}}</td>
+                    <td>{{inventario.ContenidosInv}}</td>
+                    <td> <a name="" id="" class="btn btn-light" href="{% url 'eliminar' inventario.id %}" role="button">Delete > </a>| <a name="Content" id="Content" class="btn btn-light" href="{% url 'editar' inventario.id %}" role="button">Edit ></a></td>
+
                    
 
                 </tr>
@@ -39,8 +41,7 @@
 
 
     </div>
-    <div class="card-footer text-muted">
-        Lista de inventario en el almacen
+    
     </div>
 </div>
 

@@ -1,0 +1,18 @@
+{% extends 'admin/base.html' %}
+{% block content %}
+
+<h1><font color="121B28"> Subir un archivo externo </font></h1>
+
+    <div>
+        <form action="." method="POST" enctype="multipart/form-data">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <button type="submit"><font color="121B28">Subir Archivo</font></button>
+        </form>
+
+        <br> <a href="{% url 'inicio' %}"><font color="121B28">Volver a la pagina principal</font> </a>    </br>
+        
+    
+        <a  href="{% url  'Inventario'  %}"><font color="121B28">Volver al Inventario de la bodega</font> </a>
+    </div>
+{% endblock %}

@@ -5,8 +5,16 @@
 {% block contenido %}  
 
 
+
+
 <nav class="breadcrumb">
     <a name="" id="" class="btn btn-light" href="{% url 'ingresarInventario' %}" role="button">Add ></a>
+
+    <form class="d-flex my-2 my-lg-0">
+        <input class="form-control me-sm-2" type="text" placeholder="Ingrese ID o Inventario">
+        <button class="btn btn-light my-2 my-sm-1" type="submit">Search></button>
+    </form>
+
    
 </nav>
         <table class="table">

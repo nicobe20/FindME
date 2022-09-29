@@ -38,6 +38,9 @@ def AñadirInventario(request):
 def editar(request,id):
     inventario = InventarioDeBodega.objects.get(id=id)
     formulario1 = InventarioForm(request.POST or None, request.FILES or None, instance=inventario)
+    if formulario1.is_valid() and request.POST:
+        formulario1.save()
+        return redirect('Inventario')
     return render(request,'Inventario/EditarInventario.html',{'formulario1':formulario1})
     
 def eliminarInventario(request,id): 
@@ -72,4 +75,7 @@ def Añadirtareas(request):
 def editartareas(request,id):
     tareas = Tareas.objects.get(id=id)
     formulario = TareasForm(request.POST or None, request.FILES or None, instance=tareas)
+    if formulario.is_valid() and request.POST:
+        formulario.save()
+        return redirect('Tareas')
     return render(request,'Tasks/EditarTarea.html',{'formulario':formulario})

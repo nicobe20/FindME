@@ -11,9 +11,7 @@
         id="" 
         aria-describedby="helpId" 
         placeholder="{{campo.label}}"
-        value ="{{campo.value | default:''}}"
-        
-        />
+        value ="{{campo.value | default:''}}">
       
     </div>
   <div class = "col-12 help-text">
@@ -24,7 +22,7 @@
 
 
 
-    {% endfor %}
+{% endfor %}
 <input name="" id="" class="btn btn-ligth" type="submit" value="Finish">
 
 </form>

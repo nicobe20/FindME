@@ -1,0 +1,84 @@
+{% extends "TB.html" %}
+
+{% block titulo %} Indice de inventario {% endblock %}
+
+{% block contenido %}  
+
+
+
+
+<nav class="breadcrumb">
+    <a name="" id="" class="btn btn-light" href="{% url 'ingresarInventario' %}" role="button">Add ></a>
+
+    <form class="d-flex my-2 my-lg-0">
+        <input class="form-control me-sm-2" type="text" placeholder="Ingrese ID o Inventario">
+        <button class="btn btn-light my-2 my-sm-1" type="submit">Search></button>
+    </form>
+
+   
+</nav>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Columna</th>
+                    <th>Fila</th>
+                    <th>Bloque</th>
+                    <th>Contenidos</th>
+        
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for inventario in inventario %}
+                <tr>
+                    <td>{{inventario.id}}</td>
+                    <td>{{inventario.filas}}</td>
+                    <td>{{inventario.columnas}}</td>
+                    <td>{{inventario.bloque}}</td>
+                    <td>{{inventario.ContenidosInv}}</td>
+                    <td> <a name="" id="" class="btn btn-light" href="{% url 'eliminar' inventario.id %}" role="button">Delete > </a>| <a name="Content" id="Content" class="btn btn-light" href="{% url 'editar' inventario.id %}" role="button">Edit ></a></td>
+
+                   
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+       
+
+
+    </div>
+    
+    </div>
+</div>  
+
+(% block barra_busqueda %)
+<div class = "container">
+    <div class = "row">
+        <div class="" =col-md-12 search">
+            <form method="get">
+                <div id="custom-search-input">
+                    <div class="input-group col-md-12">
+                        <input type="text" class="form-control" placeholder="Buscar..." name="buscar" value = "{{ request.GET.buscar }}">
+                        <span class="input-group-list">
+                           <i class="icon icon-search"></i>
+                           <button type="submit" class=" boton btn-success"></button>
+                        </span>
+
+                    </div>
+                </div>
+            </form>
+        
+        </div>
+
+    </div>
+</div>
+
+(% endblock barra_busqueda %)
+
+
+
+{% endblock %}
+
+    

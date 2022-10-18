@@ -80,3 +80,30 @@ def editartareas(request,id):
         formulario.save()
         return redirect('Tareas')
     return render(request,'Tasks/EditarTarea.html',{'formulario':formulario})
+
+def export_to_csv(request):
+    inventario_objs = Inventario.objects.all()
+    response = HttpResponse('text/csv')
+    response['Content-Disposition'] = 'attachment ; filename=inventario_export.csv'
+    writer = csv.writer(response)
+    writer.writerow(['codigo', 'nombre','descripción','created','updated'])
+    inventario_fields = inventario_objs.values_list('codigo', 'nombre','descripción','created','updated')
+    for inventario in inventario_fields:
+        writer.writerow(inventario)
+    return response
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Create your views here.

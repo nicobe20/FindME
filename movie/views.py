@@ -13,6 +13,7 @@ from .forms import TareasForm
 
 # Create your views here.
 def home(request):
+   queryset = request.GET.get("buscar")
    return  render(request, 'paginas/home.html')
 
 

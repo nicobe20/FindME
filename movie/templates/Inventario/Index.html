@@ -9,6 +9,8 @@
 
 <nav class="breadcrumb">
     <a name="" id="" class="btn btn-light" href="{% url 'ingresarInventario' %}" role="button">Add ></a>
+    <input type="submit" name='mybtn1' class="btn btn-outline-dark" onclick= " location.href='{% url 'excel' %}' " 
+        value="Descargar CSV"></input>
 
     <form class="d-flex my-2 my-lg-0">
         <input class="form-control me-sm-2" type="text" placeholder="Ingrese ID o Inventario">
@@ -37,7 +39,8 @@
                     <td>{{inventario.columnas}}</td>
                     <td>{{inventario.bloque}}</td>
                     <td>{{inventario.ContenidosInv}}</td>
-                    <td> <a name="" id="" class="btn btn-light" href="{% url 'eliminar' inventario.id %}" role="button">Delete > </a>| <a name="Content" id="Content" class="btn btn-light" href="{% url 'editar' inventario.id %}" role="button">Edit ></a></td>
+                    <td> <a name="" id="" class="btn btn-light" href="{% url 'eliminar' inventario.id %}" role="button">Delete > </a> | 
+                        <a name="Content" id="Content" class="btn btn-light" href="{% url 'editar' inventario.id %}" role="button">Edit ></a></td>
 
                    
 

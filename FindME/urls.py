@@ -16,27 +16,50 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from movie import views as views
+from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns = [
 
+
+# url paths 
+############################################################################################################
+#admin and home urls
+    
     path('admin/', admin.site.urls,name='Admin'),
     path('',views.home, name='inicio'),
-   # path('about/',views.about, name='about'),
-    path('Findme/', views.Findme, name ='Findme' ),
+
+
+#############################################################################################################
+# Inventory Management
     path('Inventario/', views.Inventario, name='Inventario' ),
     path('Inventario/añadirInventario', views.AñadirInventario, name='ingresarInventario' ),
-    path('Inventario/BuscarPaquete', views.BuscarPaquete, name='Buscar' ),
+    ############################################
+    #STILL IN DEVELOPMENT
+    path('Inventario/LocateCrate', views.Buscarpaquete, name='Buscarp'),
+    path('Inventario/Localizador', views.LocateAcrate, name='Localizador' ),
+    
+    ###########################################################
+    path('eliminar/<int:id>', views.eliminarInventario, name='eliminar' ),
+    path('Inventario/EditarInventario/<int:id>', views.editar, name='editar'),
+
+
+
+#############################################################################################################   
+#Work Orders Managment
+
     path('Tasks/TareasInv', views.TareasInv, name='Tareas' ),
     path('Tasks/CrearTareas', views.Añadirtareas, name='Crear'),
-   
- 
-    path('eliminar/<int:id>', views.eliminarInventario, name='eliminar' ),
     path('Delete/<int:id>', views.eliminarTareas, name='Delete' ),
+    path('Tasks/EditarTarea/<int:id>', views.editartareas, name='edit'),
+
+
+###########################################################################
+#Export
+    path('excel/', views.export_to_csv, name="excel")
  
 
-    path('Inventario/EditarInventario/<int:id>', views.editar, name='editar'),
-    path('Tasks/EditarTarea/<int:id>', views.editartareas, name='edit'),
- 
-  
+
     
     
 ]

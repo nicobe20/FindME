@@ -1,6 +1,7 @@
 
 # Register your models here.
 from dataclasses import asdict
+from pyexpat import model
 from django.urls import path
 from django.shortcuts import render
 from django import forms
@@ -11,6 +12,10 @@ from .models import InventarioDeBodega
 from django.contrib import admin
 from .models import InventarioDeBodega
 from .models import Tareas
+from import_export import resources
+from import_export.admin import ImportExportActionModelAdmin
+
+
 
 
 class CsvImportForm(forms.Form):
@@ -19,6 +24,7 @@ class CsvImportForm(forms.Form):
 
 class InventoryAdmin(admin.ModelAdmin):
     list_display = ('id','columnas','filas','bloque','ContenidosInv' )
+    search_fields =  ["ContenidosInv"]
 
     def get_urls(self):
         urls = super().get_urls()
@@ -36,7 +42,6 @@ class InventoryAdmin(admin.ModelAdmin):
             
             file_data = csv_file.read().decode("utf-8")
             csv_data = file_data.split("\n")
-
 
             #me hace un split de cada elemento en el csv para tenerlo como una lista parte cada coma
             for x in csv_data:
@@ -57,9 +62,7 @@ class InventoryAdmin(admin.ModelAdmin):
         return render(request, "admin/csv_upload.html", data)
 
 
-
 admin.site.register(InventarioDeBodega, InventoryAdmin)
 admin.site.register(Tareas)
-
 
 

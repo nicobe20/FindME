@@ -3,8 +3,9 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import InventarioDeBodega
 from .models import Tareas
-from .forms import InventarioForm
+from .forms import InventarioForm, LocalizadorForms
 from .forms import TareasForm
+import csv
 
 
 
@@ -12,16 +13,15 @@ from .forms import TareasForm
 
 
 # Create your views here.
+#############################################################################
+#Home view
 def home(request):
    return  render(request, 'paginas/home.html')
 
+####################################################################################################
 
-def about(request):
-    return render(request, 'paginas/about.html')
-
-def Findme(request):
-    return render(request,'paginas/Findme.html')
-
+#Aqui ocurre todo lo que es la gestion de inventario
+#part1
 
 
 def Inventario(request):
@@ -34,6 +34,28 @@ def AñadirInventario(request):
         formulario1.save()
         return redirect('Inventario')
     return render(request,'Inventario/AñadirInventario.html', {'formulario1':formulario1})
+
+
+#######################################################################################################
+
+#Buscar Paquetes ocurre aqui
+def Buscarpaquete(request):
+    return render(request,'Inventario/LocateCrate.html')
+
+
+def LocateAcrate(request):
+    formulario2 = LocalizadorForms(request.POST or None, request.FILES or None)
+    if formulario2.is_valid():
+        formulario2.save()
+        return redirect('Buscarp')
+    return render(request,'Inventario/Localizador.html', {'formulario2':formulario2})
+
+
+
+#################################################################################################
+
+
+#Part 2 of inventory management
 
 def editar(request,id):
     inventario = InventarioDeBodega.objects.get(id=id)
@@ -48,17 +70,15 @@ def eliminarInventario(request,id):
    inventario.delete()
    return redirect('Inventario')
    
+####################################################################################################
 
-
-def BuscarPaquete(request):
-    return render(request,'Inventario/BuscarPaquete.html')
+#toda la gestion de tareas ocurre aqui.
 
 
 def TareasInv(request):
     tareas = Tareas.objects.all()
     return render(request,'Tasks/TareasInv.html',{'tareas':tareas})
     
-
 
 def eliminarTareas(request,id):
     tareas = Tareas.objects.get(id=id)
@@ -79,3 +99,17 @@ def editartareas(request,id):
         formulario.save()
         return redirect('Tareas')
     return render(request,'Tasks/EditarTarea.html',{'formulario':formulario})
+
+##########################################################################################################
+
+#Exportar inventario ocurre aqui
+def export_to_csv(request):
+    inventario_objs =  InventarioDeBodega.objects.all()
+    response = HttpResponse('text/csv')
+    response['Content-Disposition'] = 'attachment ; filename=inventario_export.csv'
+    writer = csv.writer(response)
+    writer.writerow(['id', 'columnas','bloque','ContenidosInv'])
+    inventario_fields = inventario_objs.values_list('id', 'columnas','bloque','ContenidosInv')
+    for inventario in inventario_fields:
+        writer.writerow(inventario)
+    return response

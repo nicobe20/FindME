@@ -12,3 +12,8 @@ class InventarioForm(forms.ModelForm):
     class Meta:
         model = InventarioDeBodega
         fields = '__all__'
+
+class LocalizadorForms(forms.ModelForm):
+    class Meta:
+        model = InventarioDeBodega 
+        fields = ('id',)

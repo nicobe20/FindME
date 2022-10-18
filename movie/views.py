@@ -16,6 +16,7 @@ import csv
 #############################################################################
 #Home view
 def home(request):
+   queryset = request.GET.get("buscar")
    return  render(request, 'paginas/home.html')
 
 ####################################################################################################
@@ -100,8 +101,6 @@ def editartareas(request,id):
         return redirect('Tareas')
     return render(request,'Tasks/EditarTarea.html',{'formulario':formulario})
 
-##########################################################################################################
-
 #Exportar inventario ocurre aqui
 def export_to_csv(request):
     inventario_objs =  InventarioDeBodega.objects.all()
@@ -113,3 +112,12 @@ def export_to_csv(request):
     for inventario in inventario_fields:
         writer.writerow(inventario)
     return response
+    
+
+
+
+
+
+
+
+

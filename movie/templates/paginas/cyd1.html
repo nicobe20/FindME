@@ -1,0 +1,22 @@
+{% extends "TB.html" %}
+
+{% block titulo %}pagina de Inicio de FindME {% endblock %}
+
+{% block contenido %}
+
+
+<br> <a> Hola admininistrador aqui podras cargar y descargar archivos </a></br>
+
+<a name="" id="" class="btn btn-outline-dark" href="/admin/movie/inventariodebodega/upload-csv/" role="button">Cargar CSV ></a>
+
+
+
+<br><a> aqui podras descargar una copia de el inventario de la bodega</a></br>
+ <input type="submit" name='mybtn1' class="btn btn-outline-dark" onclick= " location.href='{% url 'excel' %}' " 
+        value="Descargar CSV >"></input>
+
+
+        <br><a> NOTA:   Esta pagina esta designada solo para uso del administrador </a></br>
+
+
+{% endblock  %}

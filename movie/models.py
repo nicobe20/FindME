@@ -1,3 +1,4 @@
+from time import timezone
 from unittest.util import _MAX_LENGTH
 from django.db import models
 
@@ -10,7 +11,8 @@ class InventarioDeBodega(models.Model):
     filas = models.IntegerField(verbose_name='Filas')
     bloque = models.CharField(max_length=200,verbose_name='Bloque')
     ContenidosInv = models.CharField(max_length=200, verbose_name='cont', default='N/A')
- 
+    created = models.DateTimeField(auto_now_add=True,)
+    updated = models.DateTimeField(auto_now_add=True,)
 
 
 

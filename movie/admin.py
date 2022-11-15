@@ -25,6 +25,8 @@ class CsvImportForm(forms.Form):
 class InventoryAdmin(admin.ModelAdmin):
     list_display = ('id','columnas','filas','bloque','ContenidosInv' )
     search_fields =  ["ContenidosInv"]
+    
+
 
     def get_urls(self):
         urls = super().get_urls()

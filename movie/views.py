@@ -1,23 +1,26 @@
-from operator import index
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from .models import InventarioDeBodega
-from .models import Tareas
-from .forms import InventarioForm, LocalizadorForms
-from .forms import TareasForm
 import csv
+from operator import index
+from django.forms import FilePathField
+from django.db import connection
+from django.http import StreamingHttpResponse as st
+from django.http import HttpResponse
+from django.shortcuts import redirect, render
 
 
 
-
-
-
+from .forms import InventarioForm, LocalizadorForms, TareasForm
+from .models import InventarioDeBodega, Tareas
+import os 
+from wsgiref.util import FileWrapper
+import mimetypes
 # Create your views here.
 #############################################################################
-#Home view
+#Home view y cargar 
 def home(request):
-   queryset = request.GET.get("buscar")
    return  render(request, 'paginas/home.html')
+
+def CyD(request):
+   return  render(request, 'paginas/cyd1.html')
 
 ####################################################################################################
 
@@ -107,17 +110,25 @@ def export_to_csv(request):
     response = HttpResponse('text/csv')
     response['Content-Disposition'] = 'attachment ; filename=inventario_export.csv'
     writer = csv.writer(response)
-    writer.writerow(['id', 'columnas','bloque','ContenidosInv'])
-    inventario_fields = inventario_objs.values_list('id', 'columnas','bloque','ContenidosInv')
+    writer.writerow(['id', 'columnas','bloque','ContenidosInv','created','updated'])
+    inventario_fields = inventario_objs.values_list('id', 'columnas','bloque','ContenidosInv','created','updated')
     for inventario in inventario_fields:
         writer.writerow(inventario)
     return response
     
 
+# toda la gestion de descarga de archivos 
 
-
-
-
-
-
+def Descargar_Archivos(request):
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    filename = '\\Finder.zip'
+    FilePathField = base_dir  + filename
+    thefile = FilePathField
+    filename = os.path.basename(thefile)
+    chunk_size = 8192
+    response = st(FileWrapper(open(thefile,'rb'),chunk_size),
+        content_type = mimetypes.guess_type(thefile)[0] )
+    response['Content-length']  = os.path.getsize(thefile)
+    response['Content-Disposition'] = "Atachment;filename%s" % filename
+    return response
 

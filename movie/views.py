@@ -116,7 +116,6 @@ def export_to_csv(request):
         writer.writerow(inventario)
     return response
     
-
 # toda la gestion de descarga de archivos 
 
 def Descargar_Archivos(request):

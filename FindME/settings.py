@@ -76,14 +76,12 @@ WSGI_APPLICATION = 'FindME.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'DBFINDME',
-        'USER' : 'root',
-        'PASSWORD' :'5463',
-        'HOST': 'localhost',
-        'PORT' : '3306'
-
-    }
+          'ENGINE': 'django.db.backends.mysql',
+          'HOST': 'unified-firefly-367313:us-central1:findme',
+          'NAME': 'DBFINDME',
+          'USER': 'root',
+          'PASSWORD': '456',
+  }
 }
 
 

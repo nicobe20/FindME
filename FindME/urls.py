@@ -15,9 +15,55 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from movie import views as movieViews
+from movie import views as views
+from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns = [
 
-    path('admin/', admin.site.urls),
-    path('',movieViews.home)
+
+# url paths 
+############################################################################################################
+#admin and home urls
+    
+    path('admin/', admin.site.urls,name='Admin'),
+    path('',views.home, name='inicio'), 
+    path('CargaYdescarga/', views.CyD, name='cyd'),
+
+#############################################################################################################
+# Inventory Management
+    path('Inventario/', views.Inventario, name='Inventario' ),
+    path('Inventario/añadirInventario', views.AñadirInventario, name='ingresarInventario' ),
+    ############################################
+    #STILL IN DEVELOPMENT
+    path('Inventario/LocateCrate', views.Buscarpaquete, name='Buscarp'),
+    path('Inventario/Localizador', views.LocateAcrate, name='Localizador' ),
+    
+    ###########################################################
+    path('eliminar/<int:id>', views.eliminarInventario, name='eliminar' ),
+    path('Inventario/EditarInventario/<int:id>', views.editar, name='editar'),
+
+
+
+#############################################################################################################   
+#Work Orders Managment
+
+    path('Tasks/TareasInv', views.TareasInv, name='Tareas' ),
+    path('Tasks/CrearTareas', views.Añadirtareas, name='Crear'),
+    path('Delete/<int:id>', views.eliminarTareas, name='Delete' ),
+    path('Tasks/EditarTarea/<int:id>', views.editartareas, name='edit'),
+
+
+###########################################################################
+#Export
+    path('excel/', views.export_to_csv, name="excel"),
+ 
+###########################################################################
+
+
+#Download files
+    path('descargar',views.Descargar_Archivos, name="descargar"),
+
+    
+    
 ]

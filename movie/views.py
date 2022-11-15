@@ -1,15 +1,12 @@
-from operator import index
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from .models import InventarioDeBodega
-from .models import Tareas
-from .forms import InventarioForm, LocalizadorForms
-from .forms import TareasForm
 import csv
+from operator import index
 
+from django.http import HttpResponse
+from django.http import FileResponse,Http404
+from django.shortcuts import redirect, render
 
-
-
+from .forms import InventarioForm, LocalizadorForms, TareasForm
+from .models import InventarioDeBodega, Tareas
 
 
 # Create your views here.
@@ -79,6 +76,8 @@ def eliminarInventario(request,id):
 def TareasInv(request):
     tareas = Tareas.objects.all()
     return render(request,'Tasks/TareasInv.html',{'tareas':tareas})
+
+
     
 
 def eliminarTareas(request,id):
@@ -114,7 +113,11 @@ def export_to_csv(request):
     return response
     
 
-
+def Ayudapdf(request):
+    try:
+        return FileResponse(open('movie/julito.pdf', 'rb'), content_type='application/pdf')
+    except FileNotFoundError:
+        raise Http404()
 
 
 

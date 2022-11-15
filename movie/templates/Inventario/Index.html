@@ -3,54 +3,44 @@
 {% block titulo %} Indice de inventario {% endblock %}
 
 {% block contenido %}  
-
-
-
-
-<nav class="breadcrumb">
-    <a name="" id="" class="btn btn-light" href="{% url 'ingresarInventario' %}" role="button">Add ></a>
-    <input type="submit" name='mybtn1' class="btn btn-outline-dark" onclick= " location.href='{% url 'excel' %}' " 
-        value="Descargar CSV"></input>
-
+<div class="container">
+    <table class="table shadow-sm mt-3">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Columna</th>
+                <th>Fila</th>
+                <th>Bloque</th>
+                <th>Contenidos</th>
+                <th>Opción</th>
     
+            </tr>
+        </thead>
+        <tbody>
 
+            {% for inventario in inventario %}
+            <tr>
+                <td>{{inventario.id}}</td>
+                <td>{{inventario.filas}}</td>
+                <td>{{inventario.columnas}}</td>
+                <td>{{inventario.bloque}}</td>
+                <td>{{inventario.ContenidosInv}}</td>
+                <td> <a name="" id="" class="btn btn-outline-danger" href="{% url 'eliminar' inventario.id %}" role="button">Delete  </a> | 
+                    <a name="Content" id="Content" class="btn btn-outline-warning" href="{% url 'editar' inventario.id %}" role="button">Edit </a></td>
+
+               
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
    
-</nav>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Columna</th>
-                    <th>Fila</th>
-                    <th>Bloque</th>
-                    <th>Contenidos</th>
-        
-                </tr>
-            </thead>
-            <tbody>
-
-                {% for inventario in inventario %}
-                <tr>
-                    <td>{{inventario.id}}</td>
-                    <td>{{inventario.filas}}</td>
-                    <td>{{inventario.columnas}}</td>
-                    <td>{{inventario.bloque}}</td>
-                    <td>{{inventario.ContenidosInv}}</td>
-                    <td> <a name="" id="" class="btn btn-light" href="{% url 'eliminar' inventario.id %}" role="button">Delete > </a> | 
-                        <a name="Content" id="Content" class="btn btn-light" href="{% url 'editar' inventario.id %}" role="button">Edit ></a></td>
-
-                   
-
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-       
-
-
-    </div>
-
-
+    <a name="" id="" class="btn btn-outline-success" href="{% url 'ingresarInventario' %}" role="button">Agregar</a>
+    <input type="submit" name='mybtn1' class="btn btn-outline-dark" onclick= " location.href='{% url 'excel2' %}' " 
+    value="Descargar CSV"></input>
+    <input type="submit" name='mybtn2' class="btn btn-outline-dark" onclick= " location.href='{% url 'admin:index' %}' " 
+    value="Cargar CSV"></input>
+</div>
 
 {% endblock %}
 

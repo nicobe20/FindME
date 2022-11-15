@@ -37,8 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'movie',
-    'import_export',
+    'movie'
 ]
 
 MIDDLEWARE = [
@@ -78,11 +77,11 @@ WSGI_APPLICATION = 'FindME.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'DBFINDME',
+        'NAME': 'Inventario',
         'USER' : 'root',
-        'PASSWORD' :'5463',
+        'PASSWORD' :'root',
         'HOST': 'localhost',
-        'PORT' : '3306'
+        'PORT' : '8889'
 
     }
 }

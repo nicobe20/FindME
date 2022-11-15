@@ -3,49 +3,39 @@
 {% block titulo %} Tareas de Inv {% endblock %}
 
 {% block contenido %}  
+<div class="container ">
+    <table class="table shadow-sm mt-3">
+        <thead>
+            <tr>
+                <th>Task ID</th>
+                <th>Nombre de la tarea</th>
+                <th>User Id</th>
+                <th>Description</th>
+                <th>Active</th>
+    
+            </tr>
+        </thead>{{Tareas.ActiveTask}}
+        <tbody>
 
+            {% for tareas in tareas %}
+            <tr>
+                <td>{{tareas.id}}</td>
+                <td>{{tareas.Nombre}}</td>
+                <td>{{tareas.IdTrabajador }}</td>
+                <td>{{tareas.Descripcion}}</td>
+                <td>{{tareas.Estado|yesno}}</td>
+                <td><a name="" id="" class="btn btn-outline-danger" href="{% url 'Delete' tareas.id %}" role="button">Eliminar </a> | <a name="" id="" class="btn btn-outline-warning" href="{% url 'edit' tareas.id %}" role="button">Editar </td>
+               
 
-<nav class="breadcrumb">
-    <a name="Content" id="Content" class="btn btn-light" href="{% url 'Crear' %}" role="button">Create ></a>
- 
-     
-   
-   
-</nav>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Task ID</th>
-                    <th>Nombre de la tarea</th>
-                    <th>User Id</th>
-                    <th>Description</th>
-                    <th>Active</th>
-        
-                </tr>
-            </thead>{{Tareas.ActiveTask}}
-            <tbody>
-
-                {% for tareas in tareas %}
-                <tr>
-                    <td>{{tareas.id}}</td>
-                    <td>{{tareas.Nombre}}</td>
-                    <td>{{tareas.IdTrabajador }}</td>
-                    <td>{{tareas.Descripcion}}</td>
-                    <td>{{tareas.Estado|yesno}}</td>
-                    <td><a name="" id="" class="btn btn-light" href="{% url 'Delete' tareas.id %}" role="button">Eliminar ></a>|<a name="" id="" class="btn btn-light" href="{% url 'edit' tareas.id %}" role="button">Editar ></td>
-                   
-
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-       
-
-
-    </div>
-    </div>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a name="Content" id="Content" class="btn btn-outline-success" href="{% url 'Crear' %}" role="button">Agregar</a>
+    <input type="submit" name='mybtn1' class="btn btn-outline-dark" onclick= " location.href='{% url 'excel2' %}' " 
+    value="Descargar CSV"></input>
 </div>
-
+        
 
 {% endblock %}
 

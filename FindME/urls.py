@@ -56,7 +56,9 @@ urlpatterns = [
 
 ###########################################################################
 #Export
-    path('excel/', views.export_to_csv, name="excel")
+    path('excel/', views.export_to_csv, name="excel2"),
+    path('upload-csv/', admin.site.urls, name="subir"),
+    path('ayuda.pdf', views.Ayudapdf, name="ayuda")
  
 
 

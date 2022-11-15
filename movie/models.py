@@ -10,7 +10,7 @@ class InventarioDeBodega(models.Model):
     filas = models.IntegerField(verbose_name='Filas')
     bloque = models.CharField(max_length=200,verbose_name='Bloque')
     ContenidosInv = models.CharField(max_length=200, verbose_name='cont', default='N/A')
- 
+    ingreso = models.DateTimeField(auto_now_add=True)
 
 
 

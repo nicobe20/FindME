@@ -12,8 +12,6 @@ from .models import InventarioDeBodega
 from django.contrib import admin
 from .models import InventarioDeBodega
 from .models import Tareas
-from import_export import resources
-from import_export.admin import ImportExportActionModelAdmin
 
 
 

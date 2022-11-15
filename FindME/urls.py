@@ -27,8 +27,8 @@ urlpatterns = [
 #admin and home urls
     
     path('admin/', admin.site.urls,name='Admin'),
-    path('',views.home, name='inicio'),
-
+    path('',views.home, name='inicio'), 
+    path('CargaYdescarga/', views.CyD, name='cyd'),
 
 #############################################################################################################
 # Inventory Management
@@ -56,9 +56,13 @@ urlpatterns = [
 
 ###########################################################################
 #Export
-    path('excel/', views.export_to_csv, name="excel")
+    path('excel/', views.export_to_csv, name="excel"),
  
+###########################################################################
 
+
+#Download files
+    path('descargar',views.Descargar_Archivos, name="descargar"),
 
     
     
